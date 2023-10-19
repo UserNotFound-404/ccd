@@ -1,3 +1,4 @@
 from django.contrib import admin
+from CCD.models import NewsMonitoring
 
-# Register your models here.
+admin.site.register(NewsMonitoring)
