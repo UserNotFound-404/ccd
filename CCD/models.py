@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import DateField, TextField, CharField, URLField, IntegerField
+from django.template.defaultfilters import truncatechars
 
 
 class NewsMonitoring(models.Model):
@@ -22,5 +23,7 @@ class NewsMonitoring(models.Model):
     ua_region = CharField(max_length=255, blank=True)
     index = IntegerField()
 
-    def __str__(self):
-        return self
+    @property
+    def short_description(self):
+        return truncatechars(self.description, 100)
+
